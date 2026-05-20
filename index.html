@@ -9,15 +9,15 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{min-height:100vh;background:radial-gradient(ellipse at top,#0d1b3e,#050c1a);display:flex;flex-direction:column;align-items:center;padding:2rem 1rem 4rem;font-family:'Noto Kufi Arabic',sans-serif}
-h1{font-size:clamp(1.5rem,5vw,2.5rem);color:#e8d5a0;margin-bottom:1.5rem;text-align:center;opacity:.9;font-weight:900}
+h1{font-size:clamp(1rem,3vw,1.3rem);color:#e8d5a0;margin-bottom:1.5rem;text-align:center;opacity:.9}
 .wrap{position:relative;width:100%;max-width:460px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(201,168,76,.35),0 12px 50px rgba(0,0,0,.6)}
 .wrap img{display:block;width:100%;height:auto;user-select:none;pointer-events:none}
 .pill{position:absolute;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;padding:0 3%}
-.pill span{font-family:'Noto Kufi Arabic',sans-serif;font-weight:900;color:#1a1a2e;text-align:center;width:100%;direction:rtl;unicode-bidi:plaintext;white-space:normal;overflow:hidden;text-overflow:ellipsis;word-wrap:break-word}
+.pill span{font-family:'Noto Kufi Arabic',sans-serif;font-weight:700;color:#1a1a2e;text-align:center;width:100%;direction:auto;unicode-bidi:plaintext;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pill span.ph{color:#8a90a8;font-weight:400;font-style:italic}
 .ctrl{margin-top:1.4rem;width:100%;max-width:460px;display:flex;flex-direction:column;gap:.9rem}
 label{font-size:.82rem;color:#e8d5a0;display:block;margin-bottom:.35rem;opacity:.85}
-textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.4);border-radius:12px;padding:.75rem 1rem;color:#fdf8f0;font-family:'Noto Kufi Arabic',sans-serif;font-size:.95rem;font-weight:700}
+textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.4);border-radius:12px;padding:.75rem 1rem;color:#fdf8f0;font-family:'Noto Kufi Arabic',sans-serif;font-size:.95rem}
 textarea:focus{border-color:#c9a84c}
 textarea::placeholder{color:rgba(253,248,240,.3)}
 .btns{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
@@ -32,7 +32,7 @@ canvas{display:none}
 </style>
 </head>
 <body>
-<h1>عيدكم مبارك</h1>
+<h1>بطاقة تهنئة عيد الأضحى</h1>
 <div class="wrap" id="wrap">
   <img id="img" src="data:image/jpeg;base64,/9j/4QBORXhpZgAATU0AKgAAAAgAAwEaAAUAAAABAAAAMgEbAAUAAAABAAAAOgEoAAMAAAABAAIAAAAAAAAALcbAAAAnEAAtxsAAACcQAAAAAP/tAEBQaG90b3Nob3AgMy4wADhCSU0EBgAAAAAABwAGAQEA/9sAhAABBAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABBAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/aAAwDAQACEAMRAA8A9/oooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q=="
   <div class="pill" id="pill">
@@ -65,7 +65,7 @@ function pos(){
   const pw=P.w*W, ph=P.h*H;
   const px=P.cx*W-pw/2, py=P.cy*H-ph/2;
   pill.style.cssText='position:absolute;left:'+px+'px;top:'+py+'px;width:'+pw+'px;height:'+ph+'px;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;padding:0 3%';
-  pt.style.fontSize=Math.max(14,ph*0.75)+'px';
+  pt.style.fontSize=Math.max(9,ph*0.55)+'px';
 }
 window.addEventListener('resize',pos);
 img.complete?pos():img.addEventListener('load',pos);
@@ -87,7 +87,7 @@ async function render(){
   if(!text)return;
   const NW=cvs.width,NH=cvs.height;
   const pw=P.w*NW,ph=P.h*NH,pcx=P.cx*NW,pcy=P.cy*NH;
-  let fs=Math.round(ph*0.85);
+  let fs=Math.round(ph*0.6);
   c.font='bold '+fs+'px "Noto Kufi Arabic",sans-serif';
   c.textAlign='center';c.textBaseline='middle';
   c.direction='rtl';c.fillStyle='#1a1a2e';
